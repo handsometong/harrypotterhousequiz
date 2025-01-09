@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js" id="ga-script"></script>
+    <!-- Google Ads-->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5615106934708024" crossorigin="anonymous"></script>
+    <script type="module">
+        import { config } from '/src/config.js';
+        if (!config.isDevelopment) {  // 只在非开发环境初始化 GA
+            document.getElementById('ga-script').setAttribute('src', `https://www.googletagmanager.com/gtag/js?id=${config.googleAnalyticsId}`);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', config.googleAnalyticsId);
+        }
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Take the Harry Potter House Quiz to discover your Hogwarts house. Find out if you belong in Gryffindor, Hufflepuff, Ravenclaw, or Slytherin with our magical sorting quiz.">
+    <title>Harry Potter House Quiz</title>
+    <link rel="icon" type="image/x-icon" href="/logo.ico">
+    <link rel="icon" type="image/svg+xml" href="/src/images/logo.ico">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet">
+    <style>
+        .logo-image {
+            background: transparent;
+            mix-blend-mode: multiply;
+        }
+    </style>
+    <!-- SEO Optimization Tags -->
+    <link rel="canonical" href="https://harrypotterhousequiz.org/" />
+    <meta property="og:title" content="Harry Potter House Quiz - Discover Your Hogwarts House" />
+    <meta property="og:description" content="Take the Harry Potter House Quiz to discover if you belong in Gryffindor, Hufflepuff, Ravenclaw, or Slytherin. Find your true Hogwarts house with our magical sorting quiz." />
+    <meta property="og:url" content="https://harrypotterhousequiz.org/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://harrypotterhousequiz.org/src/images/logo.ico" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Harry Potter House Quiz - Discover Your Hogwarts House" />
+    <meta name="twitter:description" content="Take the Harry Potter House Quiz to discover if you belong in Gryffindor, Hufflepuff, Ravenclaw, or Slytherin. Find your true Hogwarts house with our magical sorting quiz." />
+    <meta name="twitter:image" content="https://harrypotterhousequiz.org/src/images/logo.ico" />
+    
+    <meta name="keywords" content="Harry Potter, Sorting Hat Quiz, Hogwarts Houses, Gryffindor, Hufflepuff, Ravenclaw, Slytherin, House Quiz, Wizarding World, Hogwarts Test" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Harry Potter House Quiz",
+        "url": "https://harrypotterhousequiz.org/",
+        "description": "Take the Harry Potter House Quiz to discover your true Hogwarts house. Find out if you belong in brave Gryffindor, loyal Hufflepuff, wise Ravenclaw, or ambitious Slytherin through our magical sorting quiz."
+    }
+    </script>
+</head>
+<body class="bg-[#faf6f0]  text-[#242633]">
+    <!-- Header -->
+    <header class="fixed w-full bg-[#faf6f0] backdrop-blur-md z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-end space-x-3">
+                    <img src="/src/images/logo.ico" alt="Harry Potter Quiz Logo" class="w-10 h-10 logo-image">
+                    <h1 class="text-xl md:text-2xl font-bold">Harry Potter House Quiz</h1>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#features" class="hover:text-gray-300">Features</a>
+                    <a href="#quiz" class="hover:text-gray-300">Quiz</a>
+                    <a href="#intro" class="hover:text-gray-300">Introduce</a>
+                    <a href="#faqs" class="hover:text-gray-300">FAQs</a>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-4">
+                <a href="#features" class="block hover:text-gray-300">Features</a>
+                <a href="#quiz" class="block hover:text-gray-300">Quiz</a>
+                <a href="#intro" class="block hover:text-gray-300">Introduce</a>
+                <a href="#faqs" class="block hover:text-gray-300">FAQs</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 在 header 后面添加悬浮按钮 -->
+    <div id="floating-quiz-button" class="fixed left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 opacity-0" style="top: 80px;">
+        <a href="#quiz" class="bg-[#740001] text-[#D3A625] px-4 py-2 rounded-full text-xl font-semibold transition-all duration-300 shadow-lg flex items-center space-x-3 hover:bg-[#3367D6]">
+            <span>Start Quiz</span>
+            <span class="text-2xl">→</span>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center bg-[#faf6f0] from-black to-gray-900">
+        <div class="container mx-auto px-4 md:px-6 py-24 text-center max-w-4xl">
+            <h1 class="text-2xl md:text-4xl font-bold mb-8">
+                <div>Harry Potter House Quiz:Which</div>
+                <div> Hogwarts House Would You Be In?</div>
+            </h1>
+            <p class="text-lg md:text-xl mb-12">The Harry Potter House Quiz is the perfect way to discover your true Hogwarts house. Through carefully crafted questions inspired by the magical world of Harry Potter, you'll find where you truly belong.</p>
+            <p class="text-lg md:text-xl mb-12">Though the halls of Hogwarts may be distant, the magic of the Sorting Hat lives on through this enchanted quiz!
+
+                Will you join the brave hearts of Gryffindor Tower?
+                Find your family among the loyal Hufflepuffs?
+                Rise to greatness with the cunning Slytherins?
+                Or unlock wisdom with the brilliant Ravenclaws?
+                
+                Your magical journey awaits - which house will claim you as their own?</p>
+            <p class="text-lg md:text-xl mb-12">Take our magical quiz to find out where you truly belong at Hogwarts School of Witchcraft and Wizardry.</p>
+            <a href="#quiz" class="bg-[#740001] text-[#D3A625] px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#ae0001] transition-colors">Start Quiz</a>
+            <p class="text-lg md:text-xl mt-8">Whether you're a seasoned wizard or new to the magical world, join us as we explore the distinctive traits of Hogwarts' four legendary houses.</p>
+            
+            <!-- 添加YouTube视频 -->
+            <div class="mt-12" >
+                <iframe 
+                    class="w-full aspect-video max-w-3xl mx-auto rounded-lg shadow-lg"
+                    src="https://www.youtube.com/embed/T1G4wzRO_tc" 
+                    title="Harry Potter House Quiz Video"
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+        </div>
+        
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-12 bg-[#faf6f0] scroll-mt-24">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <h2 class="text-4xl font-bold text-center mb-16">Features</h2>
+            <p class="text-xl text-center mb-8">Our Harry Potter House Quiz offers unique features to enhance your sorting experience:</p>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center">
+                    <div class="bg-[#faf6f0] p-8 rounded-2xl border-2 border-[#740001] shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <h3 class="text-2xl font-semibold mb-4">Authentic Questions</h3>
+                        <p>Carefully crafted questions that truly reflect the values of each Hogwarts house.</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-[#faf6f0] p-8 rounded-2xl border-2 border-[#740001] shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <h3 class="text-2xl font-semibold mb-4">Instant Results</h3>
+                        <p>Get your house placement immediately after completing the quiz.</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-[#faf6f0] p-8 rounded-2xl border-2 border-[#740001] shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <h3 class="text-2xl font-semibold mb-4">House Details</h3>
+                        <p>Learn about your house's traits, history, and famous members.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="py-12 bg-[#faf6f0] scroll-mt-24">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <h2 class="text-4xl font-bold text-center mb-16 whitespace-normal">Sorting Hat Quiz</h2>
+            <div id="quiz-container" class="max-w-4xl mx-auto bg-[#faf6f0] p-8 rounded-2xl">
+                <div id="question-screen">
+                    <div id="questions-group" class="space-y-6 min-h-[400px] p-4 overflow-y-auto">
+                        <!-- Questions will be inserted here -->
+                    </div>
+                    <div class="text-center space-y-4">
+                        <span id="question-counter" class="text-lg block text-gray-600"></span>
+                        <button id="next-button" class="bg-[#740001] text-[#D3A625] px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#ae0001] transition-colors">
+                            Next Questions
+                        </button>
+                    </div>
+                </div>
+                <div id="result-screen" class="hidden text-center p-8 rounded-2xl border-2 border-[#740001] shadow-lg">
+                    <div class="mb-12 p-6 rounded-xl bg-white/50 backdrop-blur-sm border border-gray-200">
+                        <h2 class="text-4xl font-bold mb-4" id="house-trait"></h2>
+                        <h1 class="text-6xl font-serif mb-8" id="house-name"></h1>
+                    </div>
+                    
+                    <div class="mb-12 p-6 rounded-xl bg-white/50 backdrop-blur-sm border border-gray-200">
+                        <h2 class="text-4xl font-bold mb-8">Welcome to <span id="welcome-house"></span></h2>
+                        <p class="text-xl mb-8" id="house-description"></p>
+                    </div>
+
+                    <div class="mb-12 p-6 rounded-xl bg-white/50 backdrop-blur-sm border border-gray-200">
+                        <h2 class="text-4xl font-bold mb-8">Fellow <span id="house-fellows"></span></h2>
+                        <div class="grid grid-cols-3 gap-8 max-w-4xl mx-auto" id="fellows-container">
+                            <!-- 成员卡片将通过 JavaScript 动态生成 -->
+                        </div>
+                    </div>
+
+                    <div class="mb-12 p-6 rounded-xl bg-white/50 backdrop-blur-sm border border-gray-200">
+                        <h2 class="text-4xl font-bold mb-8">A message from your prefect</h2>
+                        <p class="text-xl mt-4" id="prefect-message"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduce Section -->
+    <section id="intro" class="py-12 bg-[#faf6f0] scroll-mt-24">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Harry Potter House Introduce</h2>
+            <p class="text-xl text-center mb-8">The Harry Potter House Quiz helps you discover which of these noble houses matches your personality and values:</p>
+            <div class="max-w-4xl mx-auto">
+                <!-- Gryffindor -->
+                <div class="mb-16 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                    <div class="w-32 h-32 md:w-48 md:h-48 flex-shrink-0">
+                        <img src="/src/images/gryffindor.svg" alt="Gryffindor crest" class="w-full h-full">
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-3xl font-bold mb-4">Gryffindor</h3>
+                        <p class="mb-4 text-lg">You are bold, passionate, and brave. You have a highly-defined sense of right and wrong, and you are not afraid to speak your mind or fight for what you want.</p>
+                        <blockquote class="flex items-start gap-4 my-12">
+                            <div class="w-8">
+                                <img src="/src/images/quote.svg" alt="quote" class="w-full opacity-20">
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-lg leading-relaxed">
+                                    "You might belong in Gryffindor,<br>
+                                    Where dwell the brave at heart,<br>
+                                    Their daring, nerve and chivalry<br>
+                                    Set Gryffindors apart."
+                                </p>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- Slytherin -->
+                <div class="mb-16 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                    <div class="w-32 h-32 md:w-48 md:h-48 flex-shrink-0">
+                        <img src="/src/images/slytherin.svg" alt="Slytherin crest" class="w-full h-full">
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-3xl font-bold mb-4">Slytherin</h3>
+                        <p class="mb-4 text-lg">You are sneaky, resourceful, and not afraid to bend the rules to your advantage. You consistently strive to get ahead, and will do everything you can to be in a position of power.</p>
+                        <blockquote class="flex items-start gap-4 my-12">
+                            <div class="w-8">
+                                <img src="/src/images/quote.svg" alt="quote" class="w-full opacity-20">
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-lg leading-relaxed">
+                                    Among the serpents you may find<br>
+                                    Your path to greatness intertwined,<br>
+                                    Where wit and guile go hand in hand,<br>
+                                    To reach the heights that they command.
+                                </p>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- Ravenclaw -->
+                <div class="mb-16 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                    <div class="w-32 h-32 md:w-48 md:h-48 flex-shrink-0">
+                        <img src="/src/images/ravenclaw.svg" alt="Ravenclaw crest" class="w-full h-full">
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-3xl font-bold mb-4">Ravenclaw</h3>
+                        <p class="mb-4 text-lg">You are wise, perceptive, and quietly brilliant. You may not always be noticed right away, but you are widely respected for your humor and brains.</p>
+                        <blockquote class="flex items-start gap-4 my-12">
+                            <div class="w-8">
+                                <img src="/src/images/quote.svg" alt="quote" class="w-full opacity-20">
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-lg leading-relaxed">
+                                    "Within these halls of knowledge true,<br>
+                                    The sharpest minds pursue,<br>
+                                    Where wisdom flows like mountain streams,<br>
+                                    And learning dreams come true."
+                                </p>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- Hufflepuff -->
+                <div class="mb-16 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                    <div class="w-32 h-32 md:w-48 md:h-48 flex-shrink-0">
+                        <img src="/src/images/hufflepuff.svg" alt="Hufflepuff crest" class="w-full h-full">
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-3xl font-bold mb-4">Hufflepuff</h3>
+                        <p class="mb-4 text-lg">You are reserved, rational, and down-to-earth. You work well with others, are a great team player, and you always take a stand against injustice.</p>
+                        <blockquote class="flex items-start gap-4 my-12">
+                            <div class="w-8">
+                                <img src="/src/images/quote.svg" alt="quote" class="w-full opacity-20">
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-lg leading-relaxed">
+                                    Or perhaps in Hufflepuff you'll dwell,<br>
+                                    Where loyalty and justice swell,<br>
+                                    With patience, truth and dedication,<br>
+                                    Hard work brings sweet satisfaction.
+                                </p>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faqs" class="py-12 bg-[#faf6f0] scroll-mt-24">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">FAQs</h2>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <!-- FAQ Item 1 -->
+                <div class="border-b border-gray-200 pb-8">
+                    <h3 class="text-2xl font-bold mb-4">What makes the Harry Potter House Quiz experience unique?</h3>
+                    <p class="text-lg">The Harry Potter House Quiz delivers an immersive experience with meticulously crafted questions that capture the true essence of each Hogwarts house. Our advanced sorting algorithms ensure accurate house placement—whether it's Gryffindor, Hufflepuff, Ravenclaw, or Slytherin.</p>
+                </div>
+
+                <div class="border-b border-gray-200 pb-8">
+                    <h3 class="text-2xl font-bold mb-4">Why choose our Harry Potter House Quiz over others?</h3>
+                    <p class="text-lg">The Harry Potter House Quiz stands out with:</p>
+                    <ul class="list-disc pl-6 mt-4 text-lg">
+                        <li>Most accurate and comprehensive house sorting system</li>
+                        <li>In-depth analysis of your house placement</li>
+                        <li>Easy social media sharing of your Harry Potter house results</li>
+                    </ul>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border-b border-gray-200 pb-8">
+                    <h3 class="text-2xl font-bold mb-4">What types of questions does the Harry Potter House Quiz include?</h3>
+                    <p class="text-lg">The Harry Potter House Quiz features carefully designed questions that assess:</p>
+                    <ul class="list-disc pl-6 mt-4 text-lg">
+                        <li>Your reactions to magical scenarios from the Harry Potter universe</li>
+                        <li>Your preferences in magical studies and artifacts</li>
+                        <li>Your alignment with core house values like bravery, loyalty, wisdom, and ambition</li>
+                    </ul>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="border-b border-gray-200 pb-8">
+                    <h3 class="text-2xl font-bold mb-4">How accurate is the Harry Potter House Quiz sorting?</h3>
+                    <p class="text-lg">The Harry Potter House Quiz accuracy depends on several factors:</p>
+                    <ul class="list-disc pl-6 mt-4 text-lg">
+                        <li>Our sophisticated sorting algorithm based on the original Hogwarts house values</li>
+                        <li>Your honest responses to the carefully crafted questions</li>
+                        <li>The comprehensive analysis of your personality traits and preferences</li>
+                    </ul>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="border-b border-gray-200 pb-8">
+                    <h3 class="text-2xl font-bold mb-4">What do the Harry Potter House Quiz results reveal?</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-4">
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Gryffindor Results</h4>
+                            <p>Your connection to bravery, courage, and chivalry. Discover if you share traits with famous Gryffindors like Harry Potter.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Hufflepuff Results</h4>
+                            <p>Your alignment with loyalty, hard work, and fairness. Learn if you embody the spirit of notable Hufflepuffs.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Ravenclaw Results</h4>
+                            <p>Your affinity for wisdom, creativity, and learning. See if you match the traits of distinguished Ravenclaws.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Slytherin Results</h4>
+                            <p>Your connection to ambition, cunning, and determination. Discover if you share qualities with legendary Slytherins.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional FAQs -->
+                <div class="space-y-8">
+                    <div class="border-b border-gray-200 pb-8">
+                        <h3 class="text-2xl font-bold mb-4">How was the Harry Potter House Quiz developed?</h3>
+                        <p class="text-lg">Our Harry Potter House Quiz is inspired by the original Sorting Hat created by the four Hogwarts founders. We've developed a modern algorithm that maintains the authentic spirit of house sorting while providing accurate results for today's wizarding world fans.</p>
+                    </div>
+
+                    <div class="border-b border-gray-200 pb-8">
+                        <h3 class="text-2xl font-bold mb-4">Can I retake the Harry Potter House Quiz?</h3>
+                        <p class="text-lg">Yes! The Harry Potter House Quiz can be taken multiple times, though we recommend trusting your first result as it often reflects your truest self. Each attempt provides a unique opportunity to explore different aspects of your personality.</p>
+                    </div>
+                    <div class="border-b border-gray-200 pb-8"></div>
+                        <h3 class="text-2xl font-bold mb-4">Are my Harry Potter House Quiz results private?</h3>
+                        <p class="text-lg">Yes, your quiz results are completely private and are not stored or shared with anyone else.</p>
+                    </div>
+                    <div class="border-b border-gray-200 pb-8">
+                        <h3 class="text-2xl font-bold mb-4">What should I do with my Harry Potter House Quiz results?</h3>
+                        <ul class="list-disc pl-6 text-lg">
+                            <li>Explore your house's rich history and traditions</li>
+                            <li>Connect with fellow house members in the Harry Potter community</li>
+                            <li>Share your results on social media with official Harry Potter House Quiz graphics</li>
+                        </ul>
+                    </div>
+
+                    <div class="border-b border-gray-200 pb-8">
+                        <h3 class="text-2xl font-bold mb-4">Who can take the Harry Potter House Quiz?</h3>
+                        <p class="text-lg">The Harry Potter House Quiz welcomes wizards and witches of all ages! Whether you're a first-year student or a seasoned magic practitioner, our quiz provides an authentic sorting experience for everyone in the magical community.</p>
+                    </div>
+
+                    <div class="border-b border-gray-200 pb-8">
+                        <h3 class="text-2xl font-bold mb-4">Are there special events related to the Harry Potter House Quiz?</h3>
+                        <p class="text-lg">Yes! We regularly host special Harry Potter House Quiz events, particularly during significant dates in the wizarding calendar. Join our community for exclusive sorting ceremonies and house-themed celebrations.</p>
+                    </div>
+
+                    <div class="border-b border-gray-200 pb-8">
+                        <h3 class="text-2xl font-bold mb-4">How does the Harry Potter House Quiz sorting system work?</h3>
+                        <p class="text-lg">The Harry Potter House Quiz employs an advanced sorting algorithm that analyzes multiple personality aspects. Each response is carefully weighted to ensure accurate house placement, considering the fundamental values and traits of all four Hogwarts houses.</p>
+                    </div>
+
+                    <!-- 新增的FAQ项目 -->
+                    <div class="border-b border-gray-200 pb-8">
+                        <h3 class="text-2xl font-bold mb-4">Is the Harry Potter House Quiz free to take?</h3>
+                        <p class="text-lg">Yes! The Harry Potter House Quiz is completely free. You can take the quiz as many times as you want without any cost.</p>
+                    </div>
+
+                    <div class="border-b border-gray-200 pb-8">
+                        <h3 class="text-2xl font-bold mb-4">How long does the Harry Potter House Quiz take to complete?</h3>
+                        <p class="text-lg">The Harry Potter House Quiz typically takes about 5-10 minutes to complete. The quiz consists of carefully selected questions to ensure an accurate house sorting experience.</p>
+                    </div>
+
+                    <div class="border-b border-gray-200 pb-8">
+                        <h3 class="text-2xl font-bold mb-4">Can I change my Harry Potter House Quiz result?</h3>
+                        <p class="text-lg">While you can retake the Harry Potter House Quiz, we recommend embracing your initial result as it often reflects your true personality traits. Remember, the Sorting Hat takes your choice into account!</p>
+                    </div>
+
+                    <div class="border-b border-gray-200 pb-8">
+                        <h3 class="text-2xl font-bold mb-4">Does the Harry Potter House Quiz work on mobile devices?</h3>
+                        <p class="text-lg">Yes! The Harry Potter House Quiz is fully optimized for all devices including smartphones, tablets, and desktop computers. You can take the quiz anywhere, anytime!</p>
+                    </div>
+
+                    <div class="border-b border-gray-200 pb-8">
+                        <h3 class="text-2xl font-bold mb-4">Are my Harry Potter House Quiz results private?</h3>
+                        <p class="text-lg">Your Harry Potter House Quiz results are private by default. You have the option to share them on social media, but this is completely voluntary and under your control.</p>
+                    </div>
+
+                    <div class="border-b border-gray-200 pb-8">
+                        <h3 class="text-2xl font-bold mb-4">What makes this Harry Potter House Quiz different from Pottermore?</h3>
+                        <p class="text-lg">While Pottermore (now Wizarding World) offers the official sorting experience, our Harry Potter House Quiz provides:</p>
+                        <ul class="list-disc pl-6 mt-4 text-lg">
+                            <li>More detailed personality analysis</li>
+                            <li>Comprehensive house descriptions</li>
+                            <li>Instant results with detailed explanations</li>
+                            <li>Multiple language support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-[#faf6f0] border-t border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">
+                <!-- 左侧：Logo和版权信息 -->
+                <div class="flex flex-col items-center md:items-start">
+                    <div class="flex items-center mb-4">
+                        <img src="/src/images/logo.ico" alt="Harry Potter Quiz Logo" class="w-8 h-8 md:w-10 md:h-10 mr-3 logo-image mt-[-16px]">
+                        <span class="text-lg md:text-xl font-bold">Harry Potter House Quiz</span>
+                    </div>
+                    <p class="text-gray-600 text-xs md:text-sm text-center md:text-left">
+                        Copyright © 2024 harrypotterhousequiz.org.<br class="md:hidden"> All rights reserved.
+                    </p>
+                </div>
+                
+                <!-- 右侧：联系方式和链接 -->
+                <div class="flex flex-col items-center md:items-end space-y-4 md:space-y-4">
+                    <p class="text-gray-600 text-sm md:text-base">Email: support@harrypotterhousequiz.org</p>
+                    <div class="flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-6 text-sm text-gray-600 items-center">
+                        <a href="/privacy-policy" class="hover:text-gray-900">Privacy Policy</a>
+                        <a href="/terms-conditions" class="hover:text-gray-900">Terms & Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const floatingButton = document.getElementById('floating-quiz-button');
+        const introSection = document.getElementById('features');
+
+        function updateButtonVisibility() {
+            const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+            const introTop = introSection.offsetTop;
+            
+            // 当滚动位置在 intro section 底部之后且在 quiz section 之前时显示按钮
+            if (scrollY >= introTop) {
+                floatingButton.style.opacity = '1';
+                floatingButton.style.pointerEvents = 'auto';
+            } else {
+                floatingButton.style.opacity = '0';
+                floatingButton.style.pointerEvents = 'none';
+            }
+        }
+
+        // 添加滚动事件监听器
+        window.addEventListener('scroll', updateButtonVisibility);
+        
+        // 页面加载时检查一次
+        updateButtonVisibility();
+    });
+    </script>
+</body>
+</html>

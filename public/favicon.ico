@@ -1,0 +1,10 @@
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- 魔法帽 -->
+    <path d="M24 4L8 44H40L24 4Z" fill="#740001"/>
+    <!-- 帽子装饰带 -->
+    <path d="M12 32H36" stroke="#D3A625" stroke-width="3"/>
+    <!-- 星星装饰 -->
+    <circle cx="24" cy="20" r="2" fill="#D3A625"/>
+    <circle cx="18" cy="24" r="2" fill="#D3A625"/>
+    <circle cx="30" cy="24" r="2" fill="#D3A625"/>
+  </svg> 

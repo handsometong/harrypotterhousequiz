@@ -1,0 +1,19 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 分院帽主体 - 使用更简单的形状 -->
+  <path d="M24 6L10 42H38L24 6Z" fill="#740001"/>
+  
+  <!-- 帽子褶皱 - 简化的线条 -->
+  <path d="M15 30C15 30 24 33 33 30" stroke="#4A0001" stroke-width="1.5"/>
+  <path d="M13 35C13 35 24 38 35 35" stroke="#4A0001" stroke-width="1.5"/>
+  
+  <!-- 帽子装饰带 - 更宽的金色带子 -->
+  <rect x="12" y="28" width="24" height="4" fill="#D3A625"/>
+  
+  <!-- 中央宝石装饰 -->
+  <circle cx="24" cy="22" r="3" fill="#D3A625"/>
+  <circle cx="24" cy="22" r="2" fill="#FFD700"/>
+  
+  <!-- 侧面装饰 -->
+  <circle cx="17" cy="25" r="1.5" fill="#D3A625"/>
+  <circle cx="31" cy="25" r="1.5" fill="#D3A625"/>
+</svg>
